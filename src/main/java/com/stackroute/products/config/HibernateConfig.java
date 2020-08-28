@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.stackroute.products.model.Customer;
 import com.stackroute.products.model.Product;
  
 
@@ -30,7 +31,7 @@ public class HibernateConfig {
 		
 		BasicDataSource ds=new BasicDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/ustjdbc");
+		ds.setUrl("jdbc:mysql://localhost:3306/dbproduct");
 		ds.setUsername("root");
 		ds.setPassword("password");
 		return ds;
@@ -49,7 +50,7 @@ public class HibernateConfig {
 		
 		sessionbean.setHibernateProperties(property);
 		
-		sessionbean.setAnnotatedClasses(Product.class);
+		sessionbean.setAnnotatedClasses(Product.class,Customer.class);
 		sessionbean.afterPropertiesSet();
 		return sessionbean;
 		
